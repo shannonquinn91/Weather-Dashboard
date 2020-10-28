@@ -8,3 +8,10 @@
     font-family: 'Roboto Slab', serif;
     font-size: 50px;
 };
+
+.day {
+    display: flex;
+    flex-direction: column;
+    background-color: lightseagreen;
+    margin-bottom: 10px;
+}

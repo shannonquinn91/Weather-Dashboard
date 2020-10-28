@@ -14,26 +14,62 @@
 </head>
 <body>
     <header class="header">Weather Dashboard</header>
-    
     <div class="container">
         <div class="row">
-            <div class="col-4 left">
-                <form class="form-inline">
-                    <h3>Search for a city</h3>
-                    <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-            <div class="col-8">
-                <h2 id="date"></h2>
-                <h2 id="city">Search for your city</h2>
-                <h4 id="temp"></h4>
-                <h4 id="humid"></h4>
-                <h4 id="wind-speed"></h4>
-                <h4 id="uv-index"></h4>
-            </div>
+          <div class="col-xl-4">
+            <form class="form-inline">
+                <h3>Search for a city</h3>
+                <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+          <div class="col-xl">
+            <h2 id="date"></h2>
+            <h2 id="city">Search for your city</h2>
+            <h4 id="temp"></h4>
+            <h4 id="humid"></h4>
+            <h4 id="wind-speed"></h4>
+            <h4 id="uv-index"></h4>
+            <br>
+            <br>
+                <div class="row">
+                    <div class="col-xl">
+                        <h3>Five Day Forecast</h3>
+                        <div id="dayOne" class="col-sm day">
+                            <div id="dateOne"></div>
+                            <div id="iconOne"></div>
+                            <div id="tempOne"></div>
+                            <div id="humidOne"></div>
+                        </div>
+                        <div id="dayTwo" class="col-sm day">
+                            <div id="dateTwo"></div>
+                            <div id="iconTwo"></div>
+                            <div id="tempTwo"></div>
+                            <div id="humidTwo"></div>
+                        </div>
+                        <div id="dayThree" class="col-sm day">
+                            <div id="dateThree"></div>
+                            <div id="iconThree"></div>
+                            <div id="tempThree"></div>
+                            <div id="humidThree"></div>
+                        </div>
+                        <div id="dayFour" class="col-sm day">
+                            <div id="dateFour"></div>
+                            <div id="iconFour"></div>
+                            <div id="tempFour"></div>
+                            <div id="humidFour"></div>
+                        </div>
+                        <div id="dayFive" class="col-sm day">
+                            <div id="dateFive"></div>
+                            <div id="iconFive"></div>
+                            <div id="tempFive"></div>
+                            <div id="humidFive"></div>
+                        </div>
+                    </div>
+                </div>    
         </div>
-    </div>
+      </div>
+
     
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script
