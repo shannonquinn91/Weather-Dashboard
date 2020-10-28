@@ -4,25 +4,39 @@ currentDay.text(m.format("dddd[,] LL"));
 var APIkey = "3dc2fb0f58e00d68a8cdc408568026d4"
 var searchCity;
 
+//Page loads, get all data from the object to local storage
+var searchItem = JSON.parse(localStorage.getItem("searchTerm")) || {};
 
 $("#searchBtn").on("click", function(event){
     //Prevent search button from refreshing page by default
     event.preventDefault();
-    //AJAX request for weather in city user enters in search box
     searchCity = $("#searchInput").val();
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIkey; 
+    //Local storage- needs help
+    var city = $(this).attr("key", "city");
+    searchItem[city] = searchCity;
+    localStorage.setItem("searchTerm", JSON.stringify(searchItem));
+    $("#searchHistory").append(searchItem[city]);
+    //AJAX request for weather in city user enters in search box
     $.ajax({
         url: queryURL,
         method: "GET"
       }).then(function(response) {
         //console.log(response);
+        //Display to user the city they searched for
         $("#city").text("Current Weather in " + searchCity);
+        //Extract current weather icon and store in variable
         var icon = response.weather[0].icon;
+        //Append icon to appear next to the name of the city
         $("#city").append(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
-        var tempF = response.main.temp;
-        tempF = (tempF - 273.15) * 1.80 + 32;
+        //Extract current temperature and do math on it to convert to F 
+        var tempF = (response.main.temp - 273.15) *1.80 + 32;
+        //Set text of temperature h2 on HTML
+        $("#temp").text("Current Temperature: " + tempF.toFixed(1) + " F");
+        //Set text of humidity h2 on html with humidity data from response
         $("#temp").text("Current Temperature: " + tempF.toFixed(1) + " F");
         $("#humid").text("Humidity: " + response.main.humidity + "%");
+        //Set text of wind speed h2 on html with wind speed data from response
         $("#wind-speed").text("Current Wind Speed: " + response.wind.speed + " mph")
         
         //AJAX request for UV index based on latitude and longitude
@@ -34,8 +48,11 @@ $("#searchBtn").on("click", function(event){
             url: uviURL,
             method: "GET"
         }).then(function(response){
+          //Extract value of the UV index and store in a variable
           var uvi = response.value;
+          //Set text of UV index h2 on html
           $("#uv-index").text("UV Index: " + uvi);
+          //Change background of UV index h2 depending on value
           if (uvi <= 2){
             $("#uv-index").css("background-color", "green")
           } else if (uvi >= 3){
@@ -53,7 +70,7 @@ $("#searchBtn").on("click", function(event){
           method: "GET"
         }).then(function(response){
           console.log(response);
-          //Extract dates and assign to variable
+          //Extract dates and store in variables
           var dayOne = response.list[0].dt_txt;
           var dayTwo = response.list[2].dt_txt;
           var dayThree = response.list[10].dt_txt;
@@ -65,19 +82,19 @@ $("#searchBtn").on("click", function(event){
           $("#dateThree").text(dayThree);
           $("#dateFour").text(dayFour);
           $("#dateFive").text(dayFive);
-          //Extract forecast icon and assign to variable
+          //Extract forecast icon and store in variables
           var iconOne = response.list[0].weather[0].icon;
           var iconTwo = response.list[2].weather[0].icon;
           var iconThree = response.list[10].weather[0].icon;
           var iconFour = response.list[18].weather[0].icon;
           var iconFive = response.list[26].weather[0].icon;
           //Append icon to appropriate day's forecast
-          $("#iconOne").append(`<img src="http://openweathermap.org/img/wn/${iconOne}@2x.png">`);
-          $("#iconTwo").append(`<img src="http://openweathermap.org/img/wn/${iconTwo}@2x.png">`);
-          $("#iconThree").append(`<img src="http://openweathermap.org/img/wn/${iconThree}@2x.png">`);
-          $("#iconFour").append(`<img src="http://openweathermap.org/img/wn/${iconFour}@2x.png">`);
-          $("#iconFive").append(`<img src="http://openweathermap.org/img/wn/${iconFive}@2x.png">`);
-          //Extract forecasted temp and assign to variable
+          $("#iconOne").attr("src", "http://openweathermap.org/img/wn/" + iconOne + "@2x.png");
+          $("#iconTwo").attr("src", "http://openweathermap.org/img/wn/" + iconTwo + "@2x.png");
+          $("#iconThree").attr("src", "http://openweathermap.org/img/wn/" + iconThree + "@2x.png");
+          $("#iconFour").attr("src", "http://openweathermap.org/img/wn/" + iconFour + "@2x.png");
+          $("#iconFive").attr("src", "http://openweathermap.org/img/wn/" + iconFive + "@2x.png");
+          //Extract forecasted temp and store in variables
           var tempOne = (response.list[0].main.temp - 273.15) * 1.80 + 32;
           var tempTwo = (response.list[2].main.temp - 273.15) * 1.80 + 32;
           var tempThree = (response.list[10].main.temp - 273.15) * 1.80 + 32;
@@ -89,7 +106,7 @@ $("#searchBtn").on("click", function(event){
           $("#tempThree").text("Temperature: " + tempThree.toFixed(1) + " F");
           $("#tempFour").text("Temperature: " + tempFour.toFixed(1) + " F");
           $("#tempFive").text("Temperature: " + tempFive.toFixed(1) + " F");
-          //Extract forecasted humidity and assign to variable
+          //Extract forecasted humidity and store in variables
           var humidOne = response.list[0].main.humidity;
           var humidTwo = response.list[2].main.humidity;
           var humidThree = response.list[10].main.humidity;
