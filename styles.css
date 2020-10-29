@@ -9,9 +9,9 @@
     font-size: 50px;
 };
 
-.day {
+/* .day {
     display: flex;
     flex-direction: column;
-    background-color: lightseagreen;
-    margin-bottom: 10px;
-}
+    background-color: lightseagreen !important;
+    margin-left: 10px;
+} */

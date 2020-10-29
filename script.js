@@ -16,6 +16,7 @@ $("#searchBtn").on("click", function(event){
     var city = $(this).attr("key", "city");
     searchItem[city] = searchCity;
     localStorage.setItem("searchTerm", JSON.stringify(searchItem));
+    //create HTML element when appending
     $("#searchHistory").append(searchItem[city]);
     //AJAX request for weather in city user enters in search box
     $.ajax({
@@ -52,8 +53,8 @@ $("#searchBtn").on("click", function(event){
           var uvi = response.value;
           //Set text of UV index h2 on html
           $("#uv-index").text("UV Index: " + uvi);
-          //Change background of UV index h2 depending on value
-          if (uvi <= 2){
+          //Change background of UV index h2 depending on value- needs work
+          if (uvi <= 3){
             $("#uv-index").css("background-color", "green")
           } else if (uvi >= 3){
               $("#uv-index").css("background-color", "yellow")
