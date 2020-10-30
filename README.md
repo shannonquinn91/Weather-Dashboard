@@ -13,5 +13,6 @@ The third AJAX request is for a five day forecast data. This response was a litt
 
 Overall I think I was pretty successful with this. I am still working on a few CSS things and still getting the hang of local storage. But this functions the way I expect it to, which is a big deal!
 
-Deployed URL:
+Deployed URL: https://shannonquinn91.github.io/Weather-Dashboard/ 
+
 
