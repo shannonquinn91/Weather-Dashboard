@@ -30,7 +30,7 @@ $("#searchBtn").on("click", function(event){
         //Extract current weather icon and store in variable
         var icon = response.weather[0].icon;
         //Append icon to appear next to the name of the city
-        $("#city").append(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
+        $("#city").append(`<img src="https://openweathermap.org/img/wn/${icon}@2x.png">`)
         //Extract current temperature and do math on it to convert to F 
         var tempF = (response.main.temp - 273.15) *1.80 + 32;
         //Set text of temperature h2 on HTML
@@ -44,7 +44,7 @@ $("#searchBtn").on("click", function(event){
         //AJAX request for UV index based on latitude and longitude
         var lat = response.coord.lat;
         var lon = response.coord.lon;
-        var uviURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey; 
+        var uviURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=" + APIkey; 
 
         $.ajax({
             url: uviURL,
@@ -66,7 +66,7 @@ $("#searchBtn").on("click", function(event){
         })
 
         //AJAX request for five-day forecast 
-        var fiveDayURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&appid=" + APIkey;
+        var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&appid=" + APIkey;
         $.ajax({
           url: fiveDayURL,
           method: "GET"
