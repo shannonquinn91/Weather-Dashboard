@@ -9,9 +9,6 @@
     font-size: 50px;
 };
 
-/* .day {
-    display: flex;
-    flex-direction: column;
-    background-color: lightseagreen !important;
-    margin-left: 10px;
-} */
+.card {
+    background-color: lightskyblue;
+}

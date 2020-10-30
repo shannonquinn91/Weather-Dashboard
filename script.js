@@ -3,6 +3,7 @@ let m = moment();
 currentDay.text(m.format("dddd[,] LL"));
 var APIkey = "3dc2fb0f58e00d68a8cdc408568026d4"
 var searchCity;
+var searchHistory = $("#searchHistory");
 
 //Page loads, get all data from the object to local storage
 var searchItem = JSON.parse(localStorage.getItem("searchTerm")) || {};
@@ -17,7 +18,7 @@ $("#searchBtn").on("click", function(event){
     searchItem[city] = searchCity;
     localStorage.setItem("searchTerm", JSON.stringify(searchItem));
     //create HTML element when appending
-    $("#searchHistory").append(searchItem[city]);
+    searchHistory.append(`<p> ${searchItem[city]} </p>`);
     //AJAX request for weather in city user enters in search box
     $.ajax({
         url: queryURL,
