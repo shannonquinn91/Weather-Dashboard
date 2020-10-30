@@ -12,7 +12,7 @@ $("#searchBtn").on("click", function(event){
     //Prevent search button from refreshing page by default
     event.preventDefault();
     searchCity = $("#searchInput").val();
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIkey; 
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&appid=" + APIkey; 
     //Local storage- needs help
     var city = $(this).attr("key", "city");
     searchItem[city] = searchCity;
