@@ -15,4 +15,6 @@ Overall I think I was pretty successful with this. I am still working on a few C
 
 Deployed URL: https://shannonquinn91.github.io/Weather-Dashboard/ 
 
-
+![Open Page](./Assets/openingpage.png)
+![Search One](./Assets/searchone.png)
+![Search Two](./Assets/searchtwo.png)
